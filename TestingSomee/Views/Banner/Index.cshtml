@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Sanita.Models.Banner>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Indice</h2>
+
+<p>
+    @Html.ActionLink("Subir Imagen", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img class="bannerPic"src="@Url.Content(@item.Img)"/>
+            <br />
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)<br />
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "boton" })|
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "boton" })
+
+        </td>
+        <td>
+            
+        </td>
+
+    </tr>
+    
+}
+
+</table>

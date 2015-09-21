@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Sanita.Models.Producto>
+
+<link href="~/Content/Productos.css" rel="stylesheet" />
+
+@section content {
+    
+
+        <section class="tblProductos">
+            <div class="divBuscar">
+                   <!--CONROL DE BUSQUEDA-->
+                   @using (Ajax.BeginForm("Search", "Productos", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divProductos", InsertionMode = InsertionMode.Replace }, new { @class="searchForm"}))
+                   {
+                       <input type="text" name="des" />
+                       <input type="submit" value="Buscar"/>
+                   }
+                   
+            </div>  
+                
+            <br />     
+            <div id="divProductos">
+                <h3 class="tlbTitle">Productos</h3> 
+                <table class="table table-striped">
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Descripcion
+                        </th>
+                    </tr>
+
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td> 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>  
+                    </tr>
+                }
+
+                </table>
+                <div class="tblButtons">
+                    @if (Model.Count() == 30){
+                    @Ajax.ActionLink("Atras", "Back", "Productos", new {ix = @Model.First().Id}, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divProductos", InsertionMode = InsertionMode.Replace }, new { @class = "btTbl" })
+                    }   
+                    @if (Model.Count() == 30){
+                    @Ajax.ActionLink("Siguiente", "next", "Productos", new {ix = @Model.Last().Id}, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divProductos", InsertionMode = InsertionMode.Replace }, new { @class = "btTbl" })
+                    }
+                <br /><br />
+
+                </div>
+           </div>
+            
+    </section>
+}

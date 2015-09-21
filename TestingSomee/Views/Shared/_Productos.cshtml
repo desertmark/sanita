@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Sanita.Models.Producto>
+
+<!--SCRIPT PARA LIMPIAR PROPAGANDA DE SOMEE.COM-->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("center").html("");
+            });
+        </script>
+
+<h3 class="tlbTitle">Productos:</h3>
+@if(Model.Count()!=30){
+    <h4 style="padding-left:10px;">
+        @Model.Count()
+        Resultados obtenidos:
+    </h4> 
+}
+<table class="table table-striped">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Descripcion
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>  
+    </tr>
+}
+</table>
+<div class="tblButtons">
+@if (Model.Count() == 30){
+    @Ajax.ActionLink("Atras", "Back", "Productos", new {ix = @Model.First().Id}, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divProductos", InsertionMode = InsertionMode.Replace }, new { @class = "btTbl" })
+}
+@if (Model.Count() == 30){
+    @Ajax.ActionLink("Siguiente", "Next", "Productos", new {ix = @Model.Last().Id}, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divProductos", InsertionMode = InsertionMode.Replace }, new { @class = "btTbl" })
+}
+    <br />
+    <br />
+</div>

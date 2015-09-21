@@ -1,0 +1,69 @@
+﻿/*Hoja de estilos para la seccion de productos*/
+
+/*Index*/
+.tblProductos {
+    max-width:800px;
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:none
+
+}
+#divProductos {
+    background-color:white;
+    display:block;
+    float:right;
+}
+.divBuscar input {
+    margin-right:0px;
+}
+.divBuscar {
+    background-color:none;
+    display:block;
+    float:right;
+}
+#divProductos {
+    width:100%;
+}
+.tlbTitle {
+    padding-left:10px;
+    font-weight:bold;
+}
+.tblButtons {
+    background-color:none;
+    width:200px;
+    margin:0 auto;
+}
+.btTbl {
+    background-color: #d3dce0;
+        border: 1px solid #787878;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 7px;
+        margin-right: 8px;
+        width: auto;
+        text-decoration:none;
+        color:black;
+}
+.btTbl:hover {
+        text-decoration:none;
+        color:white;
+}
+
+
+@media only screen and (max-width: 850px) {
+    .divBuscar input[type="text"]{
+        max-width:60%;
+
+    }
+    .divBuscar {
+        background-color:none;
+        display:block;
+        margin:0 auto;
+        max-width:75%;
+        float:none;
+
+    }
+
+}

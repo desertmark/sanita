@@ -1,0 +1,30 @@
+﻿
+
+<h2>Subir Oferta</h2>
+
+@using (Html.BeginForm("UploadImg", "Banner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <fieldset>
+        <legend>Ofertas</legend>
+
+            @Html.Label("Seleccionar una imagen", new {@for="imgFile"})
+            <input type="file" name="imagen" id="imagen" style="width:400px"/>   
+            @Html.Label("Descripcion", new {@for="descripcion"})
+            @Html.TextArea("descripcion", new{id="descripcion"})
+            <br />
+            
+            <input type="submit" name="submit" value="Subir" />
+
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("<<Atras", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

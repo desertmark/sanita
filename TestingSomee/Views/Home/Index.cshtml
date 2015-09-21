@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Sanita.Models.Banner>
+
+@section content {
+
+<div id="homeCarousel" class="carousel slide" >
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+      
+        @if (Model!=null){
+            <li style="background-color: black;" data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+            for (int i=1; i < Model.Count() ;i++ ){
+            <li style="background-color:black;" data-target="#homeCarousel" data-slide-to="@i"></li>
+            } 
+        }
+  </ol>
+       
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    
+    @if (Model!=null){
+        foreach (var item in Model)
+        {
+            if(Model.First()==item)
+            {
+
+               <div class="item active">
+                  <img src="@Url.Content(@item.Img)" class="img-responsive"/>
+                  <div class="CarouselItemDescription">
+                    <p>@item.Descripcion</p>
+                  </div>
+            </div> 
+            }
+            else{
+            <div class="item">
+              <img src="@Url.Content(@item.Img)" class="img-responsive"/>
+              <div class="CarouselItemDescription">
+                  <p>@item.Descripcion</p>
+              </div>
+            </div>
+            }   
+        }
+    }
+  </div>
+    
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#homeCarousel" data-slide="prev">
+    <span class="icon-prev effect"></span>
+  </a>
+  <a class="right carousel-control" href="#homeCarousel" data-slide="next">
+    <span class="icon-next effect"></span>
+  </a>
+</div>
+
+<div id="homePanel" class="panel panel-default">
+  <div class="panel-body">
+    Veni y acercate a conocer nuestras ofertas.
+  </div>
+  <div class="panel-footer">
+      Vas a encontrar de todo, Sanitarios, ferreteria, electricidad y pintura.
+
+  </div>
+</div>
+
+    }
